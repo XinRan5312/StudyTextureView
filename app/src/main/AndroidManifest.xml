@@ -3,7 +3,8 @@
           package="com.xinran.studytextureviewdemo">
 
     <application
-        android:allowBackup="true"
+        android:name=".TextureViewApp"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -16,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".LocalViewPlayerActivity"/>
+        <activity android:name=".camera.CameraActivity"/>
     </application>
 
 </manifest>
