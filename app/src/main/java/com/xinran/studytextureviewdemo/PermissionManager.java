@@ -49,7 +49,7 @@ public class PermissionManager {
      *
      * @param permisions
      */
-    public void requestArrayPermission(String[] permisions, final CameraActivity.OnRequestPermissionLisner permissionLisner) {
+    public void requestArrayPermission(final CameraActivity.OnRequestPermissionLisner permissionLisner, String... permisions) {
 
         mPermissions.request(permisions).subscribe(new PermissionObserver(permissionLisner));
 

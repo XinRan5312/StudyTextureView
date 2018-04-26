@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xinran.studytextureviewdemo.camera.CameraActivity;
+import com.xinran.studytextureviewdemo.jcvideoplayer.JCVideoPlayerActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -16,13 +17,15 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
     }
-    @Event(value ={R.id.camera_preview,R.id.video_player} )
+    @Event(value ={R.id.camera_preview,R.id.video_player,R.id.jc_player} )
     private void onClickButton(View view){
          int id=view.getId();
          if(id==R.id.video_player){
              mStartActvity(LocalViewPlayerActivity.class);
          }else if(id==R.id.camera_preview){
              mStartActvity(CameraActivity.class);
+         }else if(id==R.id.jc_player){
+             mStartActvity(JCVideoPlayerActivity.class);
          }
     }
 

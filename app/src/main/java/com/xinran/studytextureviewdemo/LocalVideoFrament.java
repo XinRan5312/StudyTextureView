@@ -1,5 +1,6 @@
 package com.xinran.studytextureviewdemo;
 
+import android.Manifest;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.xinran.studytextureviewdemo.adapter.VideoInfoAdapter;
+import com.xinran.studytextureviewdemo.camera.CameraActivity;
 import com.xinran.studytextureviewdemo.entity.Video;
 import com.xinran.studytextureviewdemo.utils.Utils;
 import com.xinran.studytextureviewdemo.utils.VideoProvider;
@@ -57,25 +59,38 @@ public class LocalVideoFrament extends BaseFrament implements TextureView.Surfac
      * 扫描本地视频
      */
     private void scanVideo() {
-        new Thread() {
+        PermissionManager.newInstance(getActivity()).requestArrayPermission(new CameraActivity.OnRequestPermissionLisner() {
             @Override
-            public void run() {
-                super.run();
-                mVideos = new ArrayList<>();
-                VideoProvider videoProvider = new VideoProvider(getActivity());
-                mVideos = videoProvider.getList();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mVideos.size() > 0) {
-                            setAdapter();
-                        } else {
+            public void onPermissionGranted(boolean isGranted) {
+                if(isGranted){
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            super.run();
+                            mVideos = new ArrayList<>();
+                            VideoProvider videoProvider = new VideoProvider(getActivity());
+                            mVideos = videoProvider.getList();
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (mVideos.size() > 0) {
+                                        setAdapter();
+                                    } else {
 //                            showToast("木有扫描到视频!");
+                                    }
+                                }
+                            });
                         }
-                    }
-                });
+                    }.start();
+                }
             }
-        }.start();
+
+            @Override
+            public void onPermissionComplete() {
+
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE);
+
     }
 
     /**

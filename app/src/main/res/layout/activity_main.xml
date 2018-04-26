@@ -26,6 +26,14 @@
             android:text="视频播放列表"
             android:gravity="center"
             android:layout_marginTop="30dp"/>
+        <Button
+            android:id="@+id/jc_player"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:text="节操播放列表"
+            android:gravity="center"
+            android:layout_marginTop="30dp"/>
 
     </LinearLayout>
 
