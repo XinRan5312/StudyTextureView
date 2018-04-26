@@ -46,9 +46,7 @@ public class CameraTextureView extends TextureView implements TextureView.Surfac
 		
 	}
 	
-	/* 让Activity能得到TextureView的SurfaceTexture
-	 * @see android.view.TextureView#getSurfaceTexture()
-	 */
+
 	public SurfaceTexture getSurfaceTexture(){
 		return mSurface;
 	}

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CameraUtils {
     private static final String TAG = CameraUtils.class.getSimpleName();
-    private Camera mCamera;
+    private  Camera mCamera;
     private Camera.Parameters mParams;
     private boolean isPreviewing = false;
     private float mPreviwRate = -1f;
@@ -51,7 +51,7 @@ public class CameraUtils {
     /**打开Camera
      * @param callback
      */
-    public static void openCamera(CamOpenOverCallback callback){
+    public  void openCamera(CamOpenOverCallback callback){
         Log.i(TAG, "Camera open....");
         mCamera = Camera.open();
         Log.i(TAG, "Camera open over....");
